@@ -15,18 +15,19 @@ app.use((req, res, next) => {
     next();
 });
 
+app.get('/', ((req, res) => {res.send('Hello')}))
 app.use('/api/auth', require('./routes/auth'))
 app.use('/api/profile', require('./routes/profile'))
 app.use('/api/item', require('./routes/item'))
 app.use('/api/filter', require('./routes/filter'))
 
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, 'client/build')));
-
-    app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'client/build/index.html'));
-    });
-}
+// if (process.env.NODE_ENV === 'production') {
+//     app.use(express.static(path.join(__dirname, 'client/build')));
+//
+//     app.get('*', (req, res) => {
+//         res.sendFile(path.resolve(__dirname, 'client/build/index.html'));
+//     });
+// }
 
 
 async function startApp () {
