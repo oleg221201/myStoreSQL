@@ -21,6 +21,11 @@ export const MainPage = () => {
         return items
     }
 
+    const ifEmpty = () => {
+        if (items.length === 0)
+            return <h3>Sorry, but now there are no items here. You can add first item in your profile</h3>
+    }
+
     if (!items) return <div>loading...</div>
 
     return (
@@ -38,6 +43,7 @@ export const MainPage = () => {
                 </div>
             </div>
             <br/>
+            {ifEmpty()}
             {items.map(item => {
                 return <Item data={item}/>
             })}

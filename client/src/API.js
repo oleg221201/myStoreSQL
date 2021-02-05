@@ -1,9 +1,11 @@
 import axios from 'axios'
 
 export default axios.create({
-    baseURL: 'http://localhost:4000',
+    baseURL: 'https://mystoresql.herokuapp.com/',
     responseType: 'json',
     headers: {
         'Content-Type': 'application/json'
     }
 })
+
+// baseURL: 'http://localhost:4000/',

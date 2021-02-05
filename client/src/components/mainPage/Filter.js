@@ -64,6 +64,7 @@ export const Filter = ({getItems, setItems}) => {
     }
 
     if (!data) return <div>loading...</div>
+    if (data.empty) return (<h4 className='mt-2'>Sorry, but there are no items here to use filter</h4>)
 
     return (
         <div>

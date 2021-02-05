@@ -17,6 +17,9 @@ router.get('/search',async (req, res) => {
 router.get('/', async (req, res) => {
     try {
         const items = await Item.findAll({raw: true})
+
+        if (items.length === 0) return res.json({empty: true})
+
         let allCities = []
         let minSize = items[0].size, maxSize = items[0].size
         let minPrice = items[0].price, maxPrice = items[0].price
@@ -40,6 +43,7 @@ router.get('/', async (req, res) => {
         res.json({cities, minSize, maxSize, minPrice, maxPrice})
 
     } catch (err)  {
+        console.log(err.message)
         res.status(400).json({message: 'Something go wrong, try again'})
     }
 })
